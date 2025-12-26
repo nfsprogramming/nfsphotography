@@ -1,0 +1,294 @@
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #050505;
+    /* Deep black base */
+}
+
+/* Add a subtle vignette/spotlight effect */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(40, 10, 10, 0.15) 0%, rgba(0, 0, 0, 0) 60%),
+        radial-gradient(circle at center, #111 0%, #000 100%);
+    opacity: 1;
+    z-index: -1;
+}
+
+/* Scanline/Grid mesh texture overlay */
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+
+
+/* Logo shine effect */
+.hero-logo-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: rotate-shine 10s linear infinite;
+}
+
+@keyframes rotate-shine {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-logo-container {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(220, 20, 60, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: logo-glow-pulse 3s infinite ease-in-out;
+}
+
+@keyframes logo-glow-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 40px rgba(220, 20, 60, 0.3), 0 0 80px rgba(220, 20, 60, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 60px rgba(255, 50, 50, 0.5), 0 0 100px rgba(220, 20, 60, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.hero-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Main Title - The "Photoshop" Look */
+.brand-name {
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    text-transform: uppercase;
+    font-weight: 900;
+    /* Max weight */
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1;
+    display: flex;
+    flex-wrap: wrap;
+    /* Wrap on tiny screens */
+    gap: 0.2em;
+    /* Gap between NFS and PHOTOGRAPHY */
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /* Soft Reflective Drop Shadow */
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.8));
+}
+
+/* NFS - Crisp Metallic/White */
+.brand-name {
+    color: #ffffff;
+}
+
+/* Viewfinder Aesthetic */
+.viewfinder-wrapper {
+    position: relative;
+    padding: 2rem 4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewfinder-corners {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: rgba(211, 47, 47, 0.6);
+    /* Muted red */
+    border-style: solid;
+    transition: all 0.5s ease;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+    border-width: 2px 0 0 2px;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+    border-width: 2px 2px 0 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 2px 2px;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+    border-width: 0 2px 2px 0;
+}
+
+.viewfinder-wrapper:hover .corner {
+    width: 30px;
+    height: 30px;
+    border-color: rgba(211, 47, 47, 1);
+}
+
+/* Subtle Optical Flare - NOT a glow behind the text */
+.viewfinder-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    left: -100%;
+    animation: optical-sweep 8s infinite linear;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes optical-sweep {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+/* PHOTOGRAPHY - Rich Red Gradient */
+.brand-name .text-accent {
+    background: linear-gradient(180deg, #ff4d4d 0%, #b30000 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    position: relative;
+    display: inline-block;
+}
+
+
+
+
+
+/* Subtitle - Cinematic Spaced */
+.brand-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    letter-spacing: 0.8em;
+    /* Massive spacing */
+    color: #888;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    background-size: 200% auto;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.scroll-indicator span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #666;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, #d32f2f, transparent);
+    /* Red tint */
+}

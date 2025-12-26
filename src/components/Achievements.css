@@ -1,0 +1,91 @@
+.achievements-section {
+    background: linear-gradient(to bottom, #0a0a0a, #050505);
+    padding: 4rem 0 8rem;
+}
+
+.achievements-header {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.certificate-container {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.certificate-card {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.certificate-card:hover {
+    box-shadow: 0 25px 60px rgba(220, 20, 60, 0.2);
+    border-color: rgba(220, 20, 60, 0.4);
+    transform: translateY(-5px);
+}
+
+.certificate-frame {
+    padding: 2rem;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: center;
+}
+
+.certificate-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 4px solid #fff;
+}
+
+.certificate-info {
+    padding: 2rem;
+    text-align: center;
+    background: #080808;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.certificate-info h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.contest-name {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.organizer {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .certificate-frame {
+        padding: 1rem;
+    }
+
+    .certificate-info {
+        padding: 1.5rem;
+    }
+}
