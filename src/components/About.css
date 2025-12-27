@@ -69,6 +69,34 @@
     font-size: 0.9rem;
 }
 
+/* About Image */
+.about-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid rgba(220, 20, 60, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 50px rgba(220, 20, 60, 0.3);
+}
+
+/* Features Section */
+.features-section {
+    margin-top: 4rem;
+}
+
 /* Tablet View */
 @media (max-width: 900px) {
     .about-grid {

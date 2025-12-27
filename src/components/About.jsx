@@ -34,6 +34,18 @@ const About = () => {
                         <a href="#contact" className="btn">Get in Touch</a>
                     </motion.div>
 
+                    <motion.div
+                        className="about-image"
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <img src="/nifras-portrait.jpg" alt="Nifras - Photographer" />
+                    </motion.div>
+                </div>
+
+                <div className="features-section">
                     <div className="features-grid">
                         {features.map((item, index) => (
                             <motion.div
