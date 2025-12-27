@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="desktop-menu">
           <a href="#hero" className="nav-link">Home</a>
           <a href="#about" className="nav-link">About</a>
-          <a href="#gallery" className="nav-link">Portfolio</a>
+          <a href="#gallery" className="nav-link">Gallery</a>
           <a href="#contact" className="nav-link btn-outline">Contact</a>
         </div>
 
@@ -41,7 +41,7 @@ const Navbar = () => {
             >
               <a href="#hero" onClick={() => setIsOpen(false)}>Home</a>
               <a href="#about" onClick={() => setIsOpen(false)}>About</a>
-              <a href="#gallery" onClick={() => setIsOpen(false)}>Portfolio</a>
+              <a href="#gallery" onClick={() => setIsOpen(false)}>Gallery</a>
               <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
             </motion.div>
           )}
