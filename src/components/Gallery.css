@@ -102,3 +102,79 @@
     transform: rotate(90deg);
     color: var(--accent-color);
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    /* Make overlay always visible on mobile since hover doesn't work */
+    .gallery-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    }
+
+    .gallery-item {
+        /* Add active state for touch devices */
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .gallery-item:active {
+        transform: scale(0.98);
+    }
+
+    .lightbox {
+        padding: 1rem;
+    }
+
+    .lightbox img {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .close-lightbox {
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gallery-item {
+        aspect-ratio: 4/5;
+    }
+
+    .gallery-overlay {
+        padding: 1.5rem;
+    }
+
+    .gallery-overlay h3 {
+        font-size: 1rem;
+    }
+
+    .gallery-overlay p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Touch device support - show overlay on tap */
+@media (hover: none) and (pointer: coarse) {
+    .gallery-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-item:active {
+        transform: scale(0.98);
+    }
+}

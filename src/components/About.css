@@ -24,6 +24,7 @@
     margin-bottom: 2rem;
     text-transform: uppercase;
     background: linear-gradient(45deg, #fff, #888);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -68,8 +69,104 @@
     font-size: 0.9rem;
 }
 
+/* Tablet View */
 @media (max-width: 900px) {
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .artist-name {
+        font-size: 2.8rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .features-grid {
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+    .about-grid {
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .artist-name {
+        font-size: 2rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .features-grid {
+        gap: 1rem;
+    }
+
+    .feature-card {
+        padding: 1.25rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .feature-icon {
+        margin-bottom: 0.75rem;
+        font-size: 1.5rem;
+    }
+}
+
+/* Small Mobile View */
+@media (max-width: 400px) {
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .artist-name {
+        font-size: 1.75rem;
+    }
+
+    .lead {
+        font-size: 0.95rem;
+    }
+
+    .feature-card {
+        padding: 1rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.8rem;
     }
 }
