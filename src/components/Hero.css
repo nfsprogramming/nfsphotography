@@ -292,3 +292,112 @@
     background: linear-gradient(to bottom, #d32f2f, transparent);
     /* Red tint */
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 1.5rem;
+        width: 100%;
+    }
+
+    .hero-logo-container {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 2rem;
+    }
+
+    .brand-name {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        letter-spacing: -0.01em;
+        gap: 0.3em;
+        padding: 0 0.5rem;
+    }
+
+    .viewfinder-wrapper {
+        padding: 1.5rem 2rem;
+        margin-bottom: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .corner {
+        width: 15px;
+        height: 15px;
+    }
+
+    .brand-tagline {
+        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+        letter-spacing: 0.4em;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+
+    .scroll-indicator {
+        bottom: 1rem;
+    }
+
+    .scroll-indicator .line {
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .hero-logo-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+    }
+
+    .brand-name {
+        font-size: clamp(2rem, 12vw, 3rem);
+        letter-spacing: 0;
+        gap: 0.2em;
+        padding: 0 0.25rem;
+    }
+
+    .viewfinder-wrapper {
+        padding: 1rem 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .brand-tagline {
+        font-size: clamp(0.6rem, 3vw, 0.75rem);
+        letter-spacing: 0.3em;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+    }
+
+    .viewfinder-wrapper::after {
+        width: 200px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .hero-content {
+        padding: 0 0.75rem;
+    }
+
+    .brand-name {
+        font-size: clamp(1.75rem, 14vw, 2.5rem);
+        padding: 0;
+    }
+
+    .viewfinder-wrapper {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .brand-tagline {
+        letter-spacing: 0.2em;
+        padding: 0 0.25rem;
+    }
+}
