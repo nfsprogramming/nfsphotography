@@ -4,17 +4,22 @@ import About from './components/About';
 import Achievements from './components/Achievements';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
+import SmoothScroll from './components/SmoothScroll';
+import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <Hero />
-      <About />
-      <Achievements />
-      <Gallery />
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <div className="app">
+        <ScrollProgress />
+        <Navbar />
+        <Hero />
+        <About />
+        <Achievements />
+        <Gallery />
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 }
 

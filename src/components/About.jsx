@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Camera, Eye, Aperture } from 'lucide-react';
+import ParallaxWrapper from './ParallaxWrapper';
 import './About.css';
 
 const About = () => {
@@ -41,7 +42,9 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <img src="/nifras-portrait.jpg" alt="Nifras - Photographer" />
+                        <ParallaxWrapper offset={30}>
+                            <img src="/nifras-portrait.jpg" alt="Nifras - Photographer" />
+                        </ParallaxWrapper>
                     </motion.div>
                 </div>
 

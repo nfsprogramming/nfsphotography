@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import TiltCard from './TiltCard';
 import './Gallery.css';
 
 const Gallery = () => {
@@ -84,30 +85,31 @@ const Gallery = () => {
                     {images.map((img, index) => (
                         <motion.div
                             key={img.id}
-                            className="gallery-item"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             onClick={() => setSelectedImage(img)}
                         >
-                            <img
-                                src={img.src}
-                                alt={img.title}
-                                loading="lazy"
-                                srcSet={`${img.src}?w=400 400w, ${img.src}?w=800 800w, ${img.src}?w=1200 1200w`}
-                                sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-                            />
-                            <div className="gallery-overlay">
-                                <h3>{img.title}</h3>
-                                <p>{img.category}</p>
-                            </div>
-                            <div className="photo-metadata">
-                                <small className="camera-model">{img.camera}</small>
-                                <small className="camera-settings">
-                                    ISO {img.iso} | {img.lens} | {img.aperture} | {img.shutter}
-                                </small>
-                            </div>
+                            <TiltCard className="gallery-item">
+                                <img
+                                    src={img.src}
+                                    alt={img.title}
+                                    loading="lazy"
+                                    srcSet={`${img.src}?w=400 400w, ${img.src}?w=800 800w, ${img.src}?w=1200 1200w`}
+                                    sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                                />
+                                <div className="gallery-overlay">
+                                    <h3>{img.title}</h3>
+                                    <p>{img.category}</p>
+                                </div>
+                                <div className="photo-metadata">
+                                    <small className="camera-model">{img.camera}</small>
+                                    <small className="camera-settings">
+                                        ISO {img.iso} | {img.lens} | {img.aperture} | {img.shutter}
+                                    </small>
+                                </div>
+                            </TiltCard>
                         </motion.div>
                     ))}
                 </div>

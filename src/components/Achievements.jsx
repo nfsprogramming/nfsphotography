@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
+import TiltCard from './TiltCard';
 import './Achievements.css';
 
 const Achievements = () => {
@@ -18,13 +19,7 @@ const Achievements = () => {
                 </motion.div>
 
                 <div className="certificate-container">
-                    <motion.div
-                        className="certificate-card"
-                        initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-                        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, type: "spring" }}
-                    >
+                    <TiltCard className="certificate-card">
                         <div className="certificate-frame">
                             <img src="/certificate.jpg" alt="Global Photography Contest Certificate" className="certificate-img" />
                         </div>
@@ -33,7 +28,7 @@ const Achievements = () => {
                             <p className="contest-name">Global Photography Contest &mdash; Season 10</p>
                             <p className="organizer">Awarded by iNNOVIZE Arts & Culture | 2025</p>
                         </div>
-                    </motion.div>
+                    </TiltCard>
                 </div>
             </div>
         </section>

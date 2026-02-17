@@ -1,11 +1,22 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import './Hero.css';
 
 const Hero = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
+
+    const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+    const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
     return (
-        <section id="hero" className="hero-section">
-            <div className="hero-bg"></div>
-            <div className="container hero-content">
+        <section id="hero" className="hero-section" ref={ref}>
+            <motion.div style={{ y: yBackground }} className="hero-bg"></motion.div>
+            <motion.div style={{ y: yText, opacity: opacityText }} className="container hero-content">
                 <motion.div
                     className="hero-logo-container"
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -55,7 +66,7 @@ const Hero = () => {
                     <span>Explore</span>
                     <div className="line"></div>
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 };
