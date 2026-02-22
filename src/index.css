@@ -15,6 +15,23 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -36,18 +53,23 @@ h6 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8vw, 4rem);
   line-height: 1.1;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
   margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
 p {
   color: var(--secondary-text);
   margin-bottom: 1.5rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 a {
@@ -62,13 +84,14 @@ a:hover {
 
 /* Utilities */
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 5vw;
+  width: 100%;
 }
 
 .section {
-  padding: 6rem 0;
+  padding: clamp(4rem, 10vw, 8rem) 0;
 }
 
 .text-center {
@@ -82,7 +105,7 @@ a:hover {
 /* Button */
 .btn {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   background: var(--text-color);
   color: var(--bg-color);
   font-weight: 600;
@@ -91,6 +114,7 @@ a:hover {
   border: 1px solid var(--text-color);
   transition: all var(--transition-speed);
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .btn:hover {
