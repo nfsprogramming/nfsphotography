@@ -35,6 +35,14 @@
     margin-bottom: 2rem;
 }
 
+.about-text .btn {
+    margin-top: 1.5rem;
+}
+
+.features-section {
+    margin-top: clamp(4rem, 10vw, 8rem);
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
