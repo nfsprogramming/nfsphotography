@@ -1,6 +1,5 @@
 .achievements-section {
     background: linear-gradient(to bottom, #0a0a0a, #050505);
-    padding: clamp(4rem, 10vh, 8rem) 0;
 }
 
 .achievements-header {
@@ -93,10 +92,6 @@
 }
 
 @media (max-width: 768px) {
-    .achievements-section {
-        padding: 4rem 0;
-    }
-
     .certificate-card {
         border-radius: 0;
         border-left: none;

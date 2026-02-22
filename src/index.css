@@ -1,4 +1,3 @@
-/* Global Styles & Reset */
 :root {
   --bg-color: #050505;
   --text-color: #ffffff;
@@ -7,6 +6,12 @@
   --secondary-text: #888888;
   --font-main: 'Inter', sans-serif;
   --transition-speed: 0.3s;
+
+  /* Auto Layout Tokens */
+  --container-max-width: 1400px;
+  --container-gutter: clamp(1rem, 5vw, 4rem);
+  --section-padding: clamp(4rem, 10vw, 8rem);
+  --grid-gap: clamp(1rem, 3vw, 2.5rem);
 }
 
 * {
@@ -53,12 +58,12 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.05;
 }
 
 h2 {
-  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 1rem;
 }
 
@@ -82,16 +87,25 @@ a:hover {
   opacity: 0.8;
 }
 
-/* Utilities */
+/* Auto Layout System Utilities */
 .container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 5vw;
-  width: 100%;
+  width: min(var(--container-max-width), 100% - (var(--container-gutter) * 2));
+  margin-inline: auto;
+}
+
+.auto-container {
+  width: min(var(--container-max-width), 100% - (var(--container-gutter) * 2));
+  margin-inline: auto;
+}
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-item-min-width, 300px), 100%), 1fr));
+  gap: var(--grid-gap);
 }
 
 .section {
-  padding: clamp(4rem, 10vw, 8rem) 0;
+  padding: var(--section-padding) 0;
 }
 
 .text-center {

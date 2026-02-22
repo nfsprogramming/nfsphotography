@@ -43,7 +43,9 @@ const TiltCard = ({ children, className = "" }) => {
                 rotateY,
                 rotateX,
                 transformStyle: "preserve-3d",
-                transformPerspective: 1000
+                transformPerspective: 1000,
+                width: "100%",
+                height: "100%"
             }}
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.05 }}
@@ -54,6 +56,8 @@ const TiltCard = ({ children, className = "" }) => {
                 style={{
                     transform: "translateZ(50px)",
                     transformStyle: "preserve-3d",
+                    width: "100%",
+                    height: "100%"
                 }}
             >
                 {children}

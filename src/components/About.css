@@ -4,8 +4,8 @@
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 5vw, 6rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
+    gap: var(--grid-gap);
     align-items: center;
 }
 
@@ -37,8 +37,8 @@
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--grid-gap);
 }
 
 .feature-card {
@@ -120,22 +120,13 @@
     }
 }
 
-/* Mobile Devices */
 @media (max-width: 768px) {
-    .about-section {
-        padding: 4rem 0;
-    }
-
     .artist-name {
         margin-bottom: 1.5rem;
     }
 
     .lead {
         margin-bottom: 2rem;
-    }
-
-    .feature-card {
-        padding: 1.5rem;
     }
 }
 
