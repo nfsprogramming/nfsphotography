@@ -1,168 +1,167 @@
-:root {
-  --bg-color: #050505;
-  --text-color: #ffffff;
-  --accent-color: #D32F2F;
-  /* Deep red from logo style */
-  --secondary-text: #888888;
-  --font-main: 'Inter', sans-serif;
-  --transition-speed: 0.3s;
+@import "tailwindcss";
 
-  /* Auto Layout Tokens */
-  --container-max-width: 1400px;
-  --container-gutter: clamp(1rem, 5vw, 4rem);
-  --section-padding: clamp(4rem, 10vw, 8rem);
-  --grid-gap: clamp(1rem, 3vw, 2.5rem);
+@theme {
+  --color-black: #000000;
+  --color-red: #E63946;
+  --color-offwhite: #F1FAEE;
+  --color-darkgrey: #1A1A2E;
+
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  body {
+    @apply bg-black text-offwhite font-sans overflow-x-hidden antialiased cursor-none;
+  }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
 
-@media (max-width: 1200px) {
-  html {
-    font-size: 15px;
+  ::selection {
+    @apply bg-red text-white;
   }
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-red to-rose-700;
+  }
+
+  .glass-effect {
+    @apply bg-black/40 backdrop-blur-md border border-white/5;
   }
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-main);
-  overflow-x: hidden;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: theme('colors.red');
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s;
+  mix-blend-mode: exclusion;
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background-color: theme('colors.white');
 }
 
-h1 {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  line-height: 1.05;
+/* Grain Noise Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
+/* Background Orbs */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+  background: theme('colors.red');
+  animation: float 10s ease-in-out infinite;
 }
 
-h3 {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+@keyframes shimmer {
+  from {
+    background-position: 200% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
 }
 
-p {
-  color: var(--secondary-text);
-  margin-bottom: 1.5rem;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+@keyframes float {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity var(--transition-speed);
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
 }
 
-a:hover {
-  opacity: 0.8;
+/* Smooth Scroll Lenis Fixes */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
-/* Auto Layout System Utilities */
-.container {
-  width: min(var(--container-max-width), 100% - (var(--container-gutter) * 2));
-  margin-inline: auto;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-.auto-container {
-  width: min(var(--container-max-width), 100% - (var(--container-gutter) * 2));
-  margin-inline: auto;
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
-.auto-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-item-min-width, 300px), 100%), 1fr));
-  gap: var(--grid-gap);
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-.section {
-  padding: var(--section-padding) 0;
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.text-accent {
-  color: var(--accent-color);
-}
-
-/* Button */
-.btn {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  background: var(--text-color);
-  color: var(--bg-color);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid var(--text-color);
-  transition: all var(--transition-speed);
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.btn:hover {
-  background: transparent;
-  color: var(--text-color);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--text-color);
-  border: 1px solid var(--text-color);
-}
-
-.btn-outline:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: white;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
-  box-shadow: 0 0 15px var(--accent-color);
+/* Fix Browser Autofill Background Color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px black inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

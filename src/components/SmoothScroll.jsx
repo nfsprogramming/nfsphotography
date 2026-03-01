@@ -1,28 +1,38 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
-const SmoothScroll = ({ children }) => {
+export default function SmoothScroll({ children }) {
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true,
-            smoothTouch: false // Typically better to leave native on touch devices
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
         });
 
-        function raf(time) {
+        // Update GSAP ScrollTrigger if it exists
+        lenis.on('scroll', (e) => {
+            if (window.ScrollTrigger) {
+                window.ScrollTrigger.update();
+            }
+        });
+
+        const raf = (time) => {
             lenis.raf(time);
             requestAnimationFrame(raf);
-        }
+        };
 
-        requestAnimationFrame(raf);
+        const animFrame = requestAnimationFrame(raf);
 
         return () => {
+            cancelAnimationFrame(animFrame);
             lenis.destroy();
         };
     }, []);
 
     return <>{children}</>;
-};
-
-export default SmoothScroll;
+}
